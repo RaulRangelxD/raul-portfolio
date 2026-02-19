@@ -47,7 +47,7 @@ export default function Description() {
             <div className='relative w-[80vw] md:w-[40vw] flex flex-col items-start gap-4 p-4 bg-black/40 backdrop-blur-md border border-white/10 rounded-b-2xl rounded-r-2xl overflow-hidden shadow-2xl'>
               <p className='text-start'>
                 No solo escribo código, construyo{' '}
-                <span className='text-cyan-500 font-extrabold'>
+                <span className='text-cyan-500 drop-shadow-[0_0_6px_rgba(34,211,238,0.6)] font-extrabold'>
                   experiencias
                 </span>
                 .
@@ -57,7 +57,7 @@ export default function Description() {
                 Desarrollo aplicaciones y sistemas que combinan arquitectura
                 sólida, rendimiento y una identidad visual fuerte. Trabajo
                 principalmente con{' '}
-                <span className='text-fuchsia-500 font-extrabold'>
+                <span className='text-fuchsia-500 drop-shadow-[0_0_6px_rgba(217,70,239,0.6)] font-extrabold'>
                   Next.js, TypeScript y PostgreSQL
                 </span>
                 , diseñando soluciones escalables, bien estructuradas y pensadas
@@ -67,8 +67,10 @@ export default function Description() {
               <p className='text-start'>
                 Además del desarrollo web, también trabajo en desarrollo de
                 videojuegos utilizando{' '}
-                <span className='text-fuchsia-500 font-extrabold'>Godot</span>,
-                donde aplico principios de arquitectura, máquinas de estados y
+                <span className='text-fuchsia-500 drop-shadow-[0_0_6px_rgba(217,70,239,0.6)] font-extrabold'>
+                  Godot
+                </span>
+                , donde aplico principios de arquitectura, máquinas de estados y
                 sistemas modulares para crear mecánicas limpias y reutilizables.
                 Me interesa tanto la lógica interna como la sensación que
                 transmite el juego al jugador.
