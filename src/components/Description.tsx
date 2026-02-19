@@ -1,5 +1,6 @@
 import { motion } from 'motion/react'
 import Image from 'next/image'
+import GlowDivider from '@/components/GlowDivider'
 
 export default function Description() {
   return (
@@ -24,7 +25,7 @@ export default function Description() {
           >
             <div className='absolute -inset-1 bg-linear-to-r from-cyan-500 to-fuchsia-600 rounded-b-2xl rounded-r-2xl blur opacity-20 group-hover:opacity-40 transition duration-500'></div>
 
-            <div className='w-[50vw] md:w-[30vw] rounded-b-2xl rounded-r-2xl overflow-hidden relative'>
+            <div className='w-[50vw] md:w-[30vw] border border-white/10 rounded-b-2xl rounded-r-2xl overflow-hidden relative'>
               <Image
                 src='/yo.jpg'
                 alt='yo'
@@ -36,14 +37,14 @@ export default function Description() {
             </div>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ amount: 0.5, once: true }}
             className='relative group'
           >
             <div className='absolute -inset-1 bg-linear-to-r from-cyan-500 to-fuchsia-600 rounded-b-2xl rounded-r-2xl blur opacity-10 group-hover:opacity-30 transition duration-500'></div>
 
-            <div className='relative w-[80vw] md:w-[40vw] flex flex-col items-start gap-2 p-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-b-2xl rounded-r-2xl overflow-hidden shadow-2xl'>
+            <div className='relative w-[80vw] md:w-[40vw] flex flex-col items-start gap-4 p-4 bg-black/40 backdrop-blur-md border border-white/10 rounded-b-2xl rounded-r-2xl overflow-hidden shadow-2xl'>
               <p className='text-start'>
                 No solo escribo código, construyo{' '}
                 <span className='text-cyan-500 font-extrabold'>
@@ -51,6 +52,7 @@ export default function Description() {
                 </span>
                 .
               </p>
+              <GlowDivider />
               <p className='text-start'>
                 Desarrollo aplicaciones y sistemas que combinan arquitectura
                 sólida, rendimiento y una identidad visual fuerte. Trabajo
@@ -61,6 +63,7 @@ export default function Description() {
                 , diseñando soluciones escalables, bien estructuradas y pensadas
                 para crecer sin perder claridad.
               </p>
+              <GlowDivider />
               <p className='text-start'>
                 Además del desarrollo web, también trabajo en desarrollo de
                 videojuegos utilizando{' '}
