@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import { Orbitron as OrbitronFont } from 'next/font/google'
 import '@/app/globals.css'
 import CyberpunkBackground from '@/components/CyberpunkBackground'
+import Footer from '@/components/Footer'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -38,6 +39,7 @@ export default function RootLayout({
       >
         <CyberpunkBackground />
         {children}
+        <Footer />
       </body>
     </html>
   )
