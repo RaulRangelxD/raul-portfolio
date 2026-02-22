@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
+import { FaHeart } from 'react-icons/fa'
+import { createRoot } from 'react-dom/client'
 
 type Rabbit = {
   x: number
@@ -24,27 +26,29 @@ export default function PhysicsRabbits() {
     const container = containerRef.current
     if (!container) return
 
-    const heart = document.createElement('div')
-    heart.innerText = '❤️'
-    heart.style.position = 'absolute'
-    heart.style.left = `${x}px`
-    heart.style.top = `${y}px`
-    heart.style.fontSize = '28px'
-    heart.style.pointerEvents = 'none'
-    heart.style.opacity = '1'
-    heart.style.transform = 'scale(0.5)'
-    heart.style.transition = 'all 0.6s ease-out'
-    heart.style.zIndex = '20'
+    const heartWrapper = document.createElement('div')
+    heartWrapper.style.position = 'absolute'
+    heartWrapper.style.left = `${x}px`
+    heartWrapper.style.top = `${y}px`
+    heartWrapper.style.pointerEvents = 'none'
+    heartWrapper.style.opacity = '1'
+    heartWrapper.style.transform = 'scale(0.5)'
+    heartWrapper.style.transition = 'all 0.6s ease-out'
+    heartWrapper.style.zIndex = '20'
 
-    container.appendChild(heart)
+    container.appendChild(heartWrapper)
+
+    const root = createRoot(heartWrapper)
+    root.render(<FaHeart size={28} className='text-red-500' />)
 
     requestAnimationFrame(() => {
-      heart.style.transform = 'translateY(-40px) scale(1.4)'
-      heart.style.opacity = '0'
+      heartWrapper.style.transform = 'translateY(-40px) scale(1.4)'
+      heartWrapper.style.opacity = '0'
     })
 
     setTimeout(() => {
-      heart.remove()
+      root.unmount()
+      heartWrapper.remove()
     }, 600)
   }
 
@@ -88,7 +92,6 @@ export default function PhysicsRabbits() {
 
     const DRAG = 0.995
     const DRIFT = 0.02
-    const PUSH_FORCE = 0.05
 
     rabbits.current.forEach((r, i) => {
       if (now > r.nextDirectionChange) {
@@ -133,13 +136,30 @@ export default function PhysicsRabbits() {
 
         if (dist < r.size) {
           const angle = Math.atan2(dy, dx)
-          const forceX = Math.cos(angle) * PUSH_FORCE
-          const forceY = Math.sin(angle) * PUSH_FORCE
+          const sin = Math.sin(angle)
+          const cos = Math.cos(angle)
 
-          r.vx += forceX
-          r.vy += forceY
-          other.vx -= forceX
-          other.vy -= forceY
+          const vx1 = r.vx * cos + r.vy * sin
+          const vy1 = r.vy * cos - r.vx * sin
+          const vx2 = other.vx * cos + other.vy * sin
+          const vy2 = other.vy * cos - other.vx * sin
+
+          const finalVx1 = vx2
+          const finalVx2 = vx1
+
+          r.vx = finalVx1 * cos - vy1 * sin
+          r.vy = vy1 * cos + finalVx1 * sin
+          other.vx = finalVx2 * cos - vy2 * sin
+          other.vy = vy2 * cos + finalVx2 * sin
+
+          const overlap = r.size - dist
+          const separationX = Math.cos(angle) * (overlap / 2)
+          const separationY = Math.sin(angle) * (overlap / 2)
+
+          r.x += separationX
+          r.y += separationY
+          other.x -= separationX
+          other.y -= separationY
 
           const midX = (r.x + other.x) / 2 + r.size / 2
           const midY = (r.y + other.y) / 2 + r.size / 2
