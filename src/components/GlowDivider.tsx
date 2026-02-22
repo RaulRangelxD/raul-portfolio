@@ -5,7 +5,7 @@ export default function GlowDivider() {
     <motion.div
       initial={{ scaleX: 0, opacity: 0 }}
       whileInView={{ scaleX: 1, opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
+      transition={{ duration: 1, ease: 'easeOut' }}
       viewport={{ once: true }}
       className='relative w-full h-px'
     >

@@ -9,6 +9,7 @@ type Rabbit = {
   vx: number
   vy: number
   size: number
+  nextDirectionChange: number
 }
 
 export default function PhysicsRabbits() {
@@ -19,7 +20,6 @@ export default function PhysicsRabbits() {
   const RABBIT_SIZE = 60
   const RABBIT_COUNT = 2
 
-  // 🔥 Crear corazón animado
   const spawnHeart = (x: number, y: number) => {
     const container = containerRef.current
     if (!container) return
@@ -54,6 +54,7 @@ export default function PhysicsRabbits() {
 
     const width = container.clientWidth
     const height = container.clientHeight
+    const now = performance.now()
 
     const newRabbits: Rabbit[] = []
 
@@ -61,12 +62,16 @@ export default function PhysicsRabbits() {
       const x = Math.random() * (width - RABBIT_SIZE)
       const y = Math.random() * (height - RABBIT_SIZE)
 
+      const angle = Math.random() * Math.PI * 2
+      const speed = 1.5
+
       newRabbits.push({
         x,
         y,
-        vx: 1.5 * (Math.random() > 0.5 ? 1 : -1),
-        vy: 1.5 * (Math.random() > 0.5 ? 1 : -1),
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
         size: RABBIT_SIZE,
+        nextDirectionChange: now + Math.random() * 4000 + 2000,
       })
     }
 
@@ -79,13 +84,45 @@ export default function PhysicsRabbits() {
 
     const width = container.clientWidth
     const height = container.clientHeight
+    const now = performance.now()
+
+    const DRAG = 0.995
+    const DRIFT = 0.02
+    const PUSH_FORCE = 0.05
 
     rabbits.current.forEach((r, i) => {
+      if (now > r.nextDirectionChange) {
+        const currentSpeed = Math.sqrt(r.vx * r.vx + r.vy * r.vy)
+
+        const currentAngle = Math.atan2(r.vy, r.vx)
+        const randomRotation = (Math.random() - 0.5) * Math.PI
+        const newAngle = currentAngle + randomRotation
+
+        const BOOST = 80
+        const MAX_SPEED = 2
+
+        const boostedSpeed = currentSpeed + BOOST
+        const finalSpeed = Math.min(boostedSpeed, MAX_SPEED)
+
+        r.vx = Math.cos(newAngle) * finalSpeed
+        r.vy = Math.sin(newAngle) * finalSpeed
+
+        r.nextDirectionChange = now + Math.random() * 4000 + 2000
+      }
+
+      r.vx += (Math.random() - 0.5) * DRIFT
+      r.vy += (Math.random() - 0.5) * DRIFT
+
+      r.vx *= DRAG
+      r.vy *= DRAG
+
       r.x += r.vx
       r.y += r.vy
 
-      if (r.x <= 0 || r.x + r.size >= width) r.vx *= -1
-      if (r.y <= 0 || r.y + r.size >= height) r.vy *= -1
+      if (r.x > width) r.x = -r.size
+      if (r.x + r.size < 0) r.x = width
+      if (r.y > height) r.y = -r.size
+      if (r.y + r.size < 0) r.y = height
 
       rabbits.current.forEach((other, j) => {
         if (i >= j) return
@@ -95,14 +132,15 @@ export default function PhysicsRabbits() {
         const dist = Math.sqrt(dx * dx + dy * dy)
 
         if (dist < r.size) {
-          const tempVx = r.vx
-          const tempVy = r.vy
-          r.vx = other.vx
-          r.vy = other.vy
-          other.vx = tempVx
-          other.vy = tempVy
+          const angle = Math.atan2(dy, dx)
+          const forceX = Math.cos(angle) * PUSH_FORCE
+          const forceY = Math.sin(angle) * PUSH_FORCE
 
-          // 💖 Corazón en punto medio
+          r.vx += forceX
+          r.vy += forceY
+          other.vx -= forceX
+          other.vy -= forceY
+
           const midX = (r.x + other.x) / 2 + r.size / 2
           const midY = (r.y + other.y) / 2 + r.size / 2
           spawnHeart(midX, midY)
