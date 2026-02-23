@@ -19,7 +19,7 @@ export default function PhysicsRabbits() {
   const rabbits = useRef<Rabbit[]>([])
   const animationRef = useRef<number>(0)
 
-  const RABBIT_SIZE = 60
+  const RABBIT_SIZE = 80
   const RABBIT_COUNT = 2
 
   const spawnHeart = (x: number, y: number) => {
@@ -209,7 +209,7 @@ export default function PhysicsRabbits() {
       className='absolute inset-0 pointer-events-none z-10 overflow-hidden'
     >
       <Image
-        src='/rabbit-astronaut1.png'
+        src='/rabbit-astronaut-cyberpunk.png'
         alt='rabbit 1'
         width={RABBIT_SIZE}
         height={RABBIT_SIZE}
@@ -217,7 +217,7 @@ export default function PhysicsRabbits() {
         draggable={false}
       />
       <Image
-        src='/rabbit-astronaut2.png'
+        src='/rabbit-astronaut-cyberpunk2.png'
         alt='rabbit 2'
         width={RABBIT_SIZE}
         height={RABBIT_SIZE}
