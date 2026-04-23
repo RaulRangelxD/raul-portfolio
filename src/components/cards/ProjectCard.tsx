@@ -35,7 +35,7 @@ export default function ProjectCard({
       <div className='absolute -inset-1 bg-linear-to-r from-cyan-500 to-fuchsia-600 rounded-2xl blur opacity-10 group-hover:opacity-30 transition duration-500 pointer-events-none' />
 
       <div className='flex flex-col bg-black/40 rounded-2xl overflow-hidden border border-white/10 h-full'>
-        <div className='relative w-full min-h-64 h-64 overflow-hidden'>
+        <div className='relative w-full min-h-48 overflow-hidden'>
           {isVideo(media) ? (
             <video
               src={media}

@@ -1,9 +1,9 @@
 'use client'
+import Contact from '@/components/sections/Contact'
 import Description from '@/components/sections/Description'
 import Init from '@/components/sections/Init'
 import Projects from '@/components/sections/Projects'
 import Skills from '@/components/sections/Skills'
-import WorkingProgress from '@/components/WorkingProgress'
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
       <Description />
       <Skills />
       <Projects />
-      <WorkingProgress />
+      <Contact />
     </div>
   )
 }

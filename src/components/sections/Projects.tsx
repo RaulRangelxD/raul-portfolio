@@ -8,7 +8,7 @@ const projects = [
     title: 'Dorta',
     description:
       'Pagina web de una empresa de ferretería, con diseño moderno y animaciones suaves para una experiencia atractiva.',
-    media: '/videos/dorta.mp4',
+    media: '/dorta.png',
     technologies: ['NextJs', 'TypeScript', 'Tailwind', 'Framer Motion'],
     liveUrl: 'https://dorta.vercel.app/',
   },
@@ -16,7 +16,7 @@ const projects = [
     title: 'Portfolio Website',
     description:
       'Portafolio moderno desarrollado con Next.js, animaciones fluidas y diseño High-Tech y Espacial.',
-    media: '/videos/cunaguaros.mp4',
+    media: '/cunaguaros-page.png',
     technologies: ['Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
     liveUrl: 'https://portfolio-cunaguarosdev.vercel.app/',
   },

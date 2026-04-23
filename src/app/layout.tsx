@@ -4,6 +4,7 @@ import { Orbitron as OrbitronFont } from 'next/font/google'
 import '@/app/globals.css'
 import CyberpunkBackground from '@/components/CyberpunkBackground'
 import Footer from '@/components/Footer'
+import { Toaster } from 'react-hot-toast'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -39,6 +40,16 @@ export default function RootLayout({
       >
         <CyberpunkBackground />
         {children}
+        <Toaster
+          position='top-right'
+          toastOptions={{
+            style: {
+              background: '#111',
+              color: '#fff',
+              border: '1px solid #333',
+            },
+          }}
+        />
         <Footer />
       </body>
     </html>
