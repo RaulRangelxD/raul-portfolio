@@ -3,9 +3,16 @@
 import { motion } from 'framer-motion'
 import { IoLogoFigma } from 'react-icons/io5'
 import { BiLogoPostgresql } from 'react-icons/bi'
-import { SiTypescript, SiGodotengine } from 'react-icons/si'
+import {
+  SiTypescript,
+  SiGodotengine,
+  SiPhp,
+  SiGithub,
+  SiClaudecode,
+} from 'react-icons/si'
 import { FaReact } from 'react-icons/fa'
 import { RiNodejsLine, RiTailwindCssFill, RiNextjsFill } from 'react-icons/ri'
+import { TbBrandLaravel } from 'react-icons/tb'
 
 type Skill = {
   name: string
@@ -13,12 +20,16 @@ type Skill = {
 }
 
 const skills: Skill[] = [
+  { name: 'Node.js', icon: RiNodejsLine },
+  { name: 'TypeScript', icon: SiTypescript },
   { name: 'React', icon: FaReact },
   { name: 'Next.js', icon: RiNextjsFill },
+  { name: 'PHP', icon: SiPhp },
+  { name: 'Laravel', icon: TbBrandLaravel },
   { name: 'Tailwind CSS', icon: RiTailwindCssFill },
-  { name: 'TypeScript', icon: SiTypescript },
-  { name: 'Node.js', icon: RiNodejsLine },
   { name: 'PostgreSQL', icon: BiLogoPostgresql },
+  { name: 'Claude Code', icon: SiClaudecode },
+  { name: 'GitHub', icon: SiGithub },
   { name: 'Godot', icon: SiGodotengine },
   { name: 'Figma', icon: IoLogoFigma },
 ]
@@ -32,8 +43,7 @@ export default function Skills() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ amount: 0.5, once: true }}
-            className='text-4xl md:text-5xl font-extrabold orbitron mb-4 md:mb-8 bg-linear-to-r from-cyan-500 to-fuchsia-500 bg-clip-text text-transparent select-none min-w-min'
-          >
+            className='text-4xl md:text-5xl font-extrabold orbitron mb-4 md:mb-8 bg-linear-to-r from-cyan-500 to-fuchsia-500 bg-clip-text text-transparent select-none min-w-min'>
             My Skills
           </motion.h2>
         </div>
@@ -49,8 +59,7 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.06 }}
-                className='group relative p-6 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 hover:border-cyan-400/40 transition-all duration-300 shadow-lg'
-              >
+                className='group relative p-6 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 hover:border-cyan-400/40 transition-all duration-300 shadow-lg'>
                 <div className='absolute inset-0 rounded-2xl bg-linear-to-r from-cyan-500/0 to-fuchsia-500/0 group-hover:from-cyan-500/10 group-hover:to-fuchsia-500/10 transition-all duration-300' />
 
                 <div className='relative flex flex-col items-center gap-4'>
