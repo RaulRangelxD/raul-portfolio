@@ -8,7 +8,7 @@ import {
   SiGodotengine,
   SiPhp,
   SiGithub,
-  SiClaudecode,
+  SiOpencode,
 } from 'react-icons/si'
 import { FaReact } from 'react-icons/fa'
 import { RiNodejsLine, RiTailwindCssFill, RiNextjsFill } from 'react-icons/ri'
@@ -28,10 +28,10 @@ const skills: Skill[] = [
   { name: 'Laravel', icon: TbBrandLaravel },
   { name: 'Tailwind CSS', icon: RiTailwindCssFill },
   { name: 'PostgreSQL', icon: BiLogoPostgresql },
-  { name: 'Claude Code', icon: SiClaudecode },
   { name: 'GitHub', icon: SiGithub },
   { name: 'Godot', icon: SiGodotengine },
   { name: 'Figma', icon: IoLogoFigma },
+  { name: 'Open Code', icon: SiOpencode },
 ]
 
 export default function Skills() {
