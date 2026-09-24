@@ -5,6 +5,14 @@ import ProjectCard from '@/components/cards/ProjectCard'
 
 const projects = [
   {
+    title: 'ScriptBook',
+    description:
+      'App web full-stack para escribir guiones de YouTube: editor markdown, series con roadmap y generación con IA que replica el estilo del canal, con importación desde Notion y backups en ZIP.',
+    media: '/scriptbook.webp',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind', 'Prisma'],
+    liveUrl: 'https://scriptbook-rauldev.vercel.app/',
+  },
+  {
     title: 'NexusDoc',
     description:
       'Sistema web de citas medicas, limpio, moderno y con diseño intuitivo para una experiencia de usuario fluida.',
